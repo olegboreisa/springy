@@ -4,6 +4,8 @@ public class Employee {
 
     private int id;
     private String name;
+    // ADDRESS IS DEPENDENT OBJECT!!
+    private Address address;
 
     public Employee () {
         //System.out.println("Empty Constructor");
@@ -17,14 +19,15 @@ public class Employee {
         this.name = name;
     }
 
-    public Employee(int id, String name) {
+    public Employee(int id, String name, Address address) {
         this.id = id;
         this.name = name;
+        this.address = address;
     }
 
     public void show () {
         System.out.println("show() method");
-        //System.out.println("ID - " + this.id + " NAME - "  + this.name);
+        this.address.anyMethod();
     }
 
     public int getId() {
@@ -41,5 +44,17 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String toString () {
+        return String.format("[ID] %d [NAME] %s [FROM] %s", id, name, address);
     }
 }

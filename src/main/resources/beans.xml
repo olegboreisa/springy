@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- THIS IS DEPENDENCY INJECTION THROUGH CONSTRUCTOR (IF TYPE IS NOT INDICATED IT AUTO-SET TO STRING)  -->
+    <bean id = "address" class="lt.boreisa.model.Address">
+        <constructor-arg value="Madison"></constructor-arg>
+        <constructor-arg value="Wisconsin"></constructor-arg>
+        <constructor-arg value="United States of America"></constructor-arg>
+    </bean>
+
+    <bean id ="employee" class ="lt.boreisa.model.Employee">
+        <constructor-arg value = "1" type ="int"/>
+        <constructor-arg value = "Spencer"/>
+        <constructor-arg> <ref bean="address"/> </constructor-arg>
+    </bean>
+
+
+    <!--
+    <bean id = "address" class="lt.boreisa.model.Address">
+        <property name="city" value ="Madison"></property>
+        <property name="state" value ="Wisconsin"></property>
+        <property name="country" value ="United States"></property>
+    </bean>
+
+    <bean id ="employee" class ="lt.boreisa.model.Employee">
+        <property name="id" value="2"></property>
+        <property name="name" value="Lucy"></property>
+        <property name="address" ref="address"></property>
+    </bean>
+     -->
+
+
+</beans>
