@@ -6,6 +6,9 @@ public class Address {
     private String state;
     private String country;
 
+    public Address () {} // Default Constr.
+
+
     public Address(String city, String state, String country) {
         this.city = city;
         this.state = state;

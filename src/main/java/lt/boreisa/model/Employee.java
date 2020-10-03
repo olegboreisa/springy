@@ -7,17 +7,7 @@ public class Employee {
     // ADDRESS IS DEPENDENT OBJECT!!
     private Address address;
 
-    public Employee () {
-        //System.out.println("Empty Constructor");
-    }
-
-    public Employee (int id) {
-        this.id = id;
-    }
-
-    public Employee (String name) {
-        this.name = name;
-    }
+    public Employee () {} // Default Constr.
 
     public Employee(int id, String name, Address address) {
         this.id = id;
