@@ -10,7 +10,11 @@
     [IT IS NOT ANNOTATION CONFIGURATION!!]
     WE USED <bean> TAG TO FIND EXACT CLASS! -->
 
-    <bean id="vehicle" class="lt.boreisa.model.pojo.Car"></bean>
+    <bean id="vehicle" class="lt.boreisa.model.pojo.Bus"></bean>
+
+    <bean id="tyre" class="lt.boreisa.model.pojo.Tyre">
+        <property name="brand" value="Michelin"> </property>
+    </bean>
 
 
 </beans>

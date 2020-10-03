@@ -2,10 +2,15 @@ package lt.boreisa;
 
 import lt.boreisa.model.Address;
 import lt.boreisa.model.Employee;
+import lt.boreisa.model.annotationBased.AppConfig;
+import lt.boreisa.model.annotationBased.Samsung;
 import lt.boreisa.model.pojo.Bus;
 import lt.boreisa.model.pojo.Car;
+import lt.boreisa.model.pojo.Tyre;
 import lt.boreisa.model.pojo.Vehicle;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
@@ -53,15 +58,28 @@ public class Main {
         ConfigurableApplicationContext contextPOJO = new ClassPathXmlApplicationContext(CONFIG_LOCATION_2);
         Vehicle obj = (Vehicle) contextPOJO.getBean("vehicle");
         obj.drive();
-        contextPOJO.close();
+
 
         System.out.println("_________________________");
         /* WE NEED TO SPECIFY WHAT CLASS ARE WE USING FROM INTERFACE IN GET BEANS BRACKETS. IN THIS CASE IT IS EITHER CAR
         OR BUS */
         ConfigurableApplicationContext contextANNOTATIONS = new ClassPathXmlApplicationContext(CONFIG_LOCATION_ANNOTATION);
-        Vehicle annotatedObj = (Vehicle) contextANNOTATIONS.getBean("bus");
+        Vehicle annotatedObj = (Vehicle) contextANNOTATIONS.getBean("car");
         annotatedObj.drive();
         contextANNOTATIONS.close();
+
+        System.out.println("_________________________");
+        /* LEARNING @AUTOWIRE ANNOTATION [NOT DONE YET. STILL TO LEARN MORE!] */
+        Tyre tyre = (Tyre) contextPOJO.getBean("tyre");
+        System.out.println(tyre.toString());
+        contextPOJO.close();
+
+        System.out.println("_________________________");
+        /* NO BEANS AT ALL, ONLY ANNOTATIONS */
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        Samsung s7 = appContext.getBean(Samsung.class);
+        s7.spec();
+
 
     }
 }
