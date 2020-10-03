@@ -6,8 +6,11 @@
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <!-- YOU HAVE TO MENTION WHAT CLASS OF INTERFACE YOU WANT TO USE!
-    IN THIS CASE, IT IS EITHER CAR OR BUS CLASS !! -->
+    IN THIS CASE, IT IS EITHER CAR OR BUS CLASS !!
+    [IT IS NOT ANNOTATION CONFIGURATION!!]
+    WE USED <bean> TAG TO FIND EXACT CLASS! -->
 
     <bean id="vehicle" class="lt.boreisa.model.pojo.Car"></bean>
+
 
 </beans>

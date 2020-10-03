@@ -12,6 +12,7 @@ public class Main {
 
     private static final String CONFIG_LOCATION = "beans.xml";
     private static final String CONFIG_LOCATION_2 = "springBeans.xml";
+    private static final String CONFIG_LOCATION_ANNOTATION = "annotationsBeans.xml";
 
     public static void main(String[] args) {
 
@@ -31,6 +32,7 @@ public class Main {
         // OOOORRR (! EMPLOYEE DE
         Employee employee2 = new Employee(4, "Sarah", new Address("Malibu", "California", "United States"));
         System.out.println(employee2.toString());
+        System.out.println("_________________________");
 
         // WE WOULD NEED TO DO THIS. BOTH SIDE ARE DEPENDENT [LEFT AND RIGHT SIDE]
         Bus bus = new Bus();
@@ -44,13 +46,22 @@ public class Main {
         Vehicle car1 = new Car();
         car1.drive();
 
-        // IF WE USE SPRING FRAMEWORK AND APPLICATION CONTEXT INTERFACE WE LOOSE ANOTHER DEPENDENT SIDE [RIGHT SIDE]
-        // IT IS IMPORTANT TO CAST BECAUSE GET BEAN RETURN AN OBJECT! WE NEED TO INDICATE CASTING AND INTERFACE IN BETWEEN BRACKETS
-        // ANOTHER EXAMPLE OF HOW TO USE SPRING FRAMEWORK
+        System.out.println("_________________________");
+        /* IF WE USE SPRING FRAMEWORK AND APPLICATION CONTEXT INTERFACE WE LOOSE ANOTHER DEPENDENT SIDE [RIGHT SIDE]
+         IT IS IMPORTANT TO CAST BECAUSE GET BEAN RETURN AN OBJECT! WE NEED TO INDICATE CASTING AND INTERFACE IN BETWEEN BRACKETS
+         ANOTHER EXAMPLE OF HOW TO USE SPRING FRAMEWORK */
         ConfigurableApplicationContext contextPOJO = new ClassPathXmlApplicationContext(CONFIG_LOCATION_2);
         Vehicle obj = (Vehicle) contextPOJO.getBean("vehicle");
         obj.drive();
         contextPOJO.close();
+
+        System.out.println("_________________________");
+        /* WE NEED TO SPECIFY WHAT CLASS ARE WE USING FROM INTERFACE IN GET BEANS BRACKETS. IN THIS CASE IT IS EITHER CAR
+        OR BUS */
+        ConfigurableApplicationContext contextANNOTATIONS = new ClassPathXmlApplicationContext(CONFIG_LOCATION_ANNOTATION);
+        Vehicle annotatedObj = (Vehicle) contextANNOTATIONS.getBean("bus");
+        annotatedObj.drive();
+        contextANNOTATIONS.close();
 
     }
 }

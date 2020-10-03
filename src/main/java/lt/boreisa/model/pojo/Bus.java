@@ -1,5 +1,8 @@
 package lt.boreisa.model.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Bus implements Vehicle{
 
     @Override
